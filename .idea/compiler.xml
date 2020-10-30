@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="cn.zmk.storm" />
+        <module name="storm-consumer" />
+        <module name="storm-producer" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="cn.zmk.storm" target="1.8" />
+      <module name="storm-consumer" target="1.8" />
+      <module name="storm-helloworld" target="1.8" />
+      <module name="storm-producer" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
