@@ -8,14 +8,22 @@ import	java.io.Serializable;
  */
 public class ArgsParam implements Serializable {
 
-    private String host= null;
-    private String queueName = null;
-    private String userName= null;
-    private String password = null;
-    private int port = 5672;
+    private String host;
+    private String queueName;
+    private String userName;
+    private String password ;
+    private int port;
 
     private String exchangeName;
 
+    public ArgsParam(String host, String queueName, String userName, String password, int port, String exchangeName) {
+        this.host = host;
+        this.queueName = queueName;
+        this.userName = userName;
+        this.password = password;
+        this.port = port;
+        this.exchangeName = exchangeName;
+    }
 
     public String getHost() {
         return host;

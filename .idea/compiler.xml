@@ -12,10 +12,10 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="cn.zmk.storm" target="1.8" />
-      <module name="storm-consumer" target="1.8" />
-      <module name="storm-helloworld" target="1.8" />
-      <module name="storm-producer" target="1.8" />
+      <module name="cn.zmk.storm" target="1.5" />
+      <module name="storm-consumer" target="1.5" />
+      <module name="storm-helloworld" target="1.5" />
+      <module name="storm-producer" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>
