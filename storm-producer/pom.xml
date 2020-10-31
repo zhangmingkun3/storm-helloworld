@@ -37,7 +37,7 @@
                     </descriptorRefs>
                     <archive>
                         <manifest>
-                            <mainClass>cn.zmk.storm.Producer</mainClass>
+                            <mainClass>cn.zmk.storm.ProducerConfim</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

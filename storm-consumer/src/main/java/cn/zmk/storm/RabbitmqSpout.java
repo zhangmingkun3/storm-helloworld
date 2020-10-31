@@ -35,13 +35,13 @@ public class RabbitmqSpout implements IRichSpout {
     private Connection connection;
     private Channel channel;
 
-    private static final String QUEUE_NAME = "message_queue";
+    private static final String QUEUE_NAME = "rabbitMQ.test.queue";
     private final Map<String, Long> unconfirmedMap = Collections.synchronizedMap(new HashMap<String, Long>());
 
     //连接mq服务
     private void connect() throws IOException, TimeoutException {
         ConnectionFactory factory = new ConnectionFactory();
-        factory.setHost("127.0.0.1");
+        factory.setHost("localhost");
         factory.setUsername("admin");
         factory.setPassword("admin");
         factory.setVirtualHost("/");
