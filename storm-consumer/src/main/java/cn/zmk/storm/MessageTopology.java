@@ -15,6 +15,10 @@ public class MessageTopology {
 
 
     public static void main(String[] args) throws Exception {
+
+//        String[] param = args[0].split(",");
+
+
         //组装topology
         TopologyBuilder topologyBuilder = new TopologyBuilder();
         topologyBuilder.setSpout("RabbitmqSpout", new RabbitmqSpout());

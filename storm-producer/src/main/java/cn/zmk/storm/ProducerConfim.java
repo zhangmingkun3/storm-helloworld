@@ -14,17 +14,26 @@ import java.util.concurrent.TimeoutException;
 
 public class ProducerConfim {
 
-    private final static String QUEUE_NAME = "rabbitMQ.test.queue";
+//    private final static String QUEUE_NAME = "rabbitMQ.test.queue";
 
     public static void main(String[] args) throws IOException, TimeoutException {
+
+//        String[] param = args[0].split(",");
+//        String queueName = param[4];
+
         //创建连接工厂
         ConnectionFactory factory = new ConnectionFactory();
 
         // 设置RabbitMQ相关信息
-        factory.setHost("localhost");
-        factory.setUsername("admin");
-        factory.setPassword("admin");
+//        factory.setHost(param[0]);
+//        factory.setUsername(param[1]);
+//        factory.setPassword(param[2]);
+//        factory.setPort(Integer.valueOf(param[3]));
+
+        factory.setHost("192.168.0.24");
         factory.setPort(5672);
+        factory.setUsername("RMQ_cts");
+        factory.setPassword("RMQ_cts_2019");
 
         // 创建一个新的连接
         Connection connection = factory.newConnection();
@@ -34,7 +43,7 @@ public class ProducerConfim {
         // 声明一个队列
         // queueDeclare（队列名称，是否持久化（true表示是，队列将在服务器重启时生存），是否是独占队列（创建者可以使用的私有队列，断开后自动删除），
         // 当所有消费者客户端连接断开时是否自动删除队列，队列的其他参数）
-        channel.queueDeclare(QUEUE_NAME, true, false, false, null);
+        channel.queueDeclare("performanceTest", true, false, false, null);
 
         //开启放松放松确认模式
         channel.confirmSelect();
@@ -83,7 +92,7 @@ public class ProducerConfim {
             confirmSet.add(tag);
             System.out.println("tag:" + tag);
 
-            channel.basicPublish("",QUEUE_NAME,null,message.getBytes("UTF-8"));
+            channel.basicPublish("","performanceTest",null,message.getBytes("UTF-8"));
 //            channel.basicGet(QUEUE_NAME,false);
 
             System.out.println("Producer Send +'" + message + "'");

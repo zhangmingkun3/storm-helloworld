@@ -35,20 +35,33 @@ public class RabbitmqSpout implements IRichSpout {
     private Connection connection;
     private Channel channel;
 
-    private static final String QUEUE_NAME = "rabbitMQ.test.queue";
+//    private String host;
+//    private String userName;
+//    private String password;
+//    private String queueName;
+
+//    private static final String QUEUE_NAME = "rabbitMQ.test.queue";
     private final Map<String, Long> unconfirmedMap = Collections.synchronizedMap(new HashMap<String, Long>());
+
+//    public RabbitmqSpout(String host, String userName, String password,String queueName) {
+//        this.host = host;
+//        this.userName = userName;
+//        this.password = password;
+//        this.queueName = queueName;
+//    }
 
     //连接mq服务
     private void connect() throws IOException, TimeoutException {
         ConnectionFactory factory = new ConnectionFactory();
-        factory.setHost("localhost");
-        factory.setUsername("admin");
-        factory.setPassword("admin");
+        factory.setHost("192.168.0.24");
+        factory.setPort(5672);
+        factory.setUsername("RMQ_cts");
+        factory.setPassword("RMQ_cts_2019");
         factory.setVirtualHost("/");
 
         connection = factory.newConnection();
         channel = connection.createChannel();
-        channel.queueDeclare(QUEUE_NAME, true, false, false, null);
+        channel.queueDeclare("performanceTest", true, false, false, null);
     }
 
     @Override
@@ -81,7 +94,7 @@ public class RabbitmqSpout implements IRichSpout {
     @Override
     public void nextTuple() {
         try {
-            GetResponse response = channel.basicGet(QUEUE_NAME, false);
+            GetResponse response = channel.basicGet("performanceTest", false);
             if (response == null) {
                 Utils.sleep(3000);
             } else {
